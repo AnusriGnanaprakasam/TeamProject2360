@@ -48,10 +48,14 @@ public class ControllerForum {
 	public ControllerForum() {
 	}
 
-	// Reference to the shared in-memory database
+	/**
+	 * Reference to the shared in-memory database
+	 */
 	private static Database theDatabase = applicationMain.HW2.database;
 
-	// In-memory repositories — kept in sync with the database after every operation
+	/**
+	 * In-memory repositories — kept in sync with the database after every operation
+	 */
 	private static PostRepository  postRepo  = new PostRepository();
 	private static ReplyRepository replyRepo = new ReplyRepository();
 

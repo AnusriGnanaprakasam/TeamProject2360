@@ -352,7 +352,10 @@ public class ViewForum {
 	*/
 
 	/**********
-	 * Private local method to initialize the standard fields for a Label.
+	 * <p> Title: setupLabelUI(label, font, fontsize, width, position, positionX, positionY) Method. </p>
+	 *
+	 * <p> Description: Private local method that sets the label field user interface, including instantiating the text field object, setting the font type
+	 * and size, creating the width and position, as well as set the text's position within the box. </p>
 	 */
 	private void setupLabelUI(Label l, String ff, double f, double w, Pos p, double x, double y) {
 		l.setFont(Font.font(ff, f));
@@ -363,7 +366,10 @@ public class ViewForum {
 	}
 
 	/**********
-	 * Private local method to initialize the standard fields for a Button.
+	 * <p> Title: setupButtonUI(button, font, fontsize, width, position, positionX, positionY) Method. </p>
+	 *
+	 * <p> Description: Private local method that sets the button field user interface, including instantiating the text field object, setting the font type
+	 * and size, creating the width and position, as well as set the text's position within the box. </p>
 	 */
 	private void setupButtonUI(Button b, String ff, double f, double w, Pos p, double x, double y) {
 		b.setFont(Font.font(ff, f));
@@ -374,7 +380,10 @@ public class ViewForum {
 	}
 
 	/**********
-	 * Private local method to initialize the standard fields for a TextField.
+	 * <p> Title: setupTextFieldUI(text, font, fontsize, width, position, positionX, positionY) Method. </p>
+	 *
+	 * <p> Description: Private local method that sets the text field user interface, including instantiating the text field object, setting the font type
+	 * and size, creating the width and position, as well as set the text's position within the box. </p>
 	 */
 	private void setupTextFieldUI(TextField t, String ff, double f, double w, Pos p, double x, double y) {
 		t.setFont(Font.font(ff, f));

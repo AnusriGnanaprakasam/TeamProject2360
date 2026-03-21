@@ -46,141 +46,265 @@ public class ViewForum {
 	/*-*******************************************************************************************
 	Attributes
 	*/
-	/*******
-	 These values keep the forum screen consistent with the overall
-	 application window size. This supports the student user story that the
-	 discussion forum should open as part or the same app layout and feel easy
-	 to navigate.
+	
+	/**
+	 * Maintains a consistent forum view size aligned with the main application window,
+	 * ensuring a uniform layout and seamless integration with the overall UI.
 	 */
 	private static double width  = applicationMain.HW2.WINDOW_WIDTH;
+
+	/**
+	 * Maintains a consistent forum view height aligned with the main application window,
+	 * supporting a predictable and user-friendly interface experience.
+	 */
 	private static double height = applicationMain.HW2.WINDOW_HEIGHT;
 
-	/*******
-	These components identify the page and show who is logged in.
-    This supports student user stories such as:
-    "As a student, I want to know what page I am on"
-	 */
 	// Area 1: Page header 
+	/**
+	 * Displays the title of the current page to orient users within the application.
+	 */
 	private static Label label_PageTitle  = new Label("Discussion Forum");
+
+	/**
+	 * Displays the currently logged-in user to provide context and reinforce session awareness.
+	 */
 	private static Label label_LoggedInAs = new Label();
+
+	/**
+	 * Visual separator used to structure the layout and improve readability of the header section.
+	 */
 	private static Line  line_Sep1        = new Line(20, 55, width - 20, 55);
 
-	/*******
-	This section lets students browse available discussion posts.
-	The ListView acts as the main navigation area for selecting
-	a post and loading its content into the display area.
-	 */
 	// Area 2: Post list (left column)
+	/**
+	 * Labels the post list section, helping users identify where available discussions are displayed.
+	 */
 	private static Label label_PostList = new Label("Posts");
+
+	/**
+	 * Displays available discussion posts and serves as the primary navigation component
+	 * for selecting and loading post content.
+	 */
 	protected static ListView<String> list_Posts = new ListView<>();
 
-	/*******
-	These controls help students find relevant posts more quickly
-	*/
+	
 	// Search / filter controls
+	/**
+	 * Input field for entering search queries to filter posts efficiently.
+	 */
 	protected static TextField text_Search     = new TextField();
+
+	/**
+	 * Triggers filtering of posts based on the user's search input.
+	 */
 	private static Button      button_Search   = new Button("Search");
+
+	/**
+	 * Resets the post list to show all available posts, removing any applied filters.
+	 */
 	private static Button      button_AllPosts = new Button("All Posts");
+
+	/**
+	 * Filters the post list to show only posts created by the current user,
+	 * supporting personalized navigation.
+	 */
 	private static Button      button_MyPosts  = new Button("My Posts");
 
-	/*******
-	This area shows the full contents of the currently selected post.
-	It supports user stories such as:
-	"As a student, I want to open a post and read its full content
-	so I can understand the discussion before replying."
-	 */
+
 	// Area 3: Post content display (center)
+	/**
+	 * Labels the post content display area to clarify its purpose.
+	 */
 	private static Label label_PostDisplay = new Label("Post Content");
+
+	/**
+	 * Displays the full content of the selected post, allowing users to read and understand discussions.
+	 */
 	protected static TextArea text_PostDisplay = new TextArea();
 
-	/*******
-	This section shows replies connected to the selected post.
-	It supports user stories such as:
-	"As a student, I want to read replies to a post so I can follow the
-	conversation."
-	*/
 	// Area 4: Reply list (right column)
+	/**
+	 * Labels the reply list section to indicate where responses to a post are shown.
+	 */
 	private static Label label_ReplyList = new Label("Replies");
+
+	/**
+	 * Displays replies associated with the selected post, enabling users to follow conversations.
+	 */
 	protected static ListView<String> list_Replies = new ListView<>();
+
+	/**
+	 * Filters replies to show only those that have not yet been read by the user.
+	 */
 	private static Button button_UnreadOnly = new Button("Unread Only");
+
+	/**
+	 * Displays all replies associated with the selected post, removing any filters.
+	 */
 	private static Button button_AllReplies = new Button("All Replies");
 
-	/*******
-	These input controls allow students to create new discussion
-	posts or edit/delete posts they have already made.
-	 */
 	// Area 5: Create / edit post inputs
+	/**
+	 * Labels the input section for creating or editing posts, guiding user interaction.
+	 */
 	private static Label      label_NewPost       = new Label("Create / Edit Post");
+
+	/**
+	 * Visual separator used to distinguish the post input section from other UI areas.
+	 */
 	private static Line       line_Sep2            = new Line(20, 435, width - 20, 435);
+
+	/**
+	 * Input field for specifying the title of a post, improving organization and readability.
+	 */
 	protected static TextField text_PostTitle      = new TextField();
+
+	/**
+	 * Input field for assigning a post to a thread, supporting topic-based organization.
+	 */
 	protected static TextField text_PostThread     = new TextField();
+
+	/**
+	 * Input area for composing the main content of a post.
+	 */
 	protected static TextArea  text_PostContent    = new TextArea();
 
+	/**
+	 * Initiates creation of a new post using the provided input fields.
+	 */
 	private static Button button_CreatePost = new Button("Create Post");
+
+	/**
+	 * Applies updates to an existing post, enabling content modification.
+	 */
 	private static Button button_UpdatePost = new Button("Update Post");
+
+	/**
+	 * Deletes the selected post after confirmation, supporting content management.
+	 */
 	private static Button button_DeletePost = new Button("Delete Post");
 
-	/*******
-	These controls allow students to participate in discussions
-	by writing and managing replies to posts.
-	 */
+	
 	// Area 6: Reply input
+	/**
+	 * Labels the reply input section, guiding users to contribute to discussions.
+	 */
 	private static Label     label_ReplyInput  = new Label("Write a Reply");
+
+	/**
+	 * Input area for composing replies to the selected post.
+	 */
 	protected static TextArea text_ReplyInput  = new TextArea();
 
+	/**
+	 * Submits a new reply to the currently selected post.
+	 */
 	private static Button button_CreateReply = new Button("Post Reply");
+
+	/**
+	 * Updates an existing reply, allowing users to edit their contributions.
+	 */
 	private static Button button_UpdateReply = new Button("Update Reply");
+
+	/**
+	 * Deletes a selected reply after confirmation, supporting moderation and cleanup.
+	 */
 	private static Button button_DeleteReply = new Button("Delete Reply");
 
-	/*******
-	 These controls exist for elevated roles only and are not part of
-	 the normal student workflow.
-	 They support administrative stories such as creating or removing
-	 discussion threads used to organize posts by topic.
-	 Since students should only post within available threads, these
-	 controls are hidden from student users.
-	 */
 	// Thread management (staff/admin only — hidden for student roles)
+	/**
+	 * Labels the thread management section, which is intended for administrative use only.
+	 */
 	private static Label      label_ThreadMgmt  = new Label("Thread Management (Staff/Admin)");
+
+	/**
+	 * Input field for specifying the name of a new discussion thread.
+	 */
 	protected static TextField text_ThreadName  = new TextField();
+
+	/**
+	 * Input field for providing a description of a discussion thread, aiding organization.
+	 */
 	protected static TextField text_ThreadDesc  = new TextField();
+
+	/**
+	 * Creates a new discussion thread, supporting topic organization (restricted to elevated roles).
+	 */
 	private static Button button_CreateThread   = new Button("Create Thread");
+
+	/**
+	 * Deletes an existing discussion thread, supporting administrative management of topics.
+	 */
 	private static Button button_DeleteThread   = new Button("Delete Thread");
 
-	/*******
-	this button allows the user to leave the forum page and return
-	to the previous screen.
+	// Navigation
+	/**
+	 * Navigates the user back to the previous screen, supporting application flow control.
 	 */
-	// -Navigation
 	private static Button button_Back = new Button("Back");
 
-	/*******
-	These alert objects provide feedback and confirmation messages.
-	 */
 	// Alerts
+	/**
+	 * Displays error messages to inform users of issues during operations.
+	 */
 	protected static Alert alertError          = new Alert(AlertType.ERROR);
+
+	/**
+	 * Displays informational messages to provide feedback on successful operations.
+	 */
 	protected static Alert alertInfo           = new Alert(AlertType.INFORMATION);
+
+	/**
+	 * Confirmation dialog for deleting a post, preventing accidental data loss.
+	 */
 	protected static Alert confirm_DeletePost  = new Alert(AlertType.CONFIRMATION);
+
+	/**
+	 * Confirmation dialog for deleting a reply, ensuring intentional user actions.
+	 */
 	protected static Alert confirm_DeleteReply = new Alert(AlertType.CONFIRMATION);
 
 	// State
-	/** The id of the post currently loaded in the display area; -1 if none. */
+	/**
+	 * Tracks the ID of the currently selected post; -1 indicates no post is selected.
+	 */
 	protected static int currentPostId = -1;
 
-	/** These references connect the forum view to the rest of the
-	application. They help this screen function as part of the
-	larger system by giving access to the database, current user,
-	current stage, and forum scene.
-	This supports user stories related to persistence, navigation,
-	and role-based behavior.*/
 	// Singleton infrastructure ----
+	/**
+	 * Singleton instance of the forum view, ensuring only one instance manages the UI state.
+	 */
 	private static ViewForum   theView;
+
+	/**
+	 * Reference to the shared database instance, enabling persistence and data retrieval.
+	 */
 	private static Database    theDatabase = applicationMain.HW2.database;
+
+	/**
+	 * Primary stage used to render the forum UI within the application window.
+	 */
 	protected static Stage     theStage;
+
+	/**
+	 * Root container for all UI components in the forum view.
+	 */
 	private static Pane        theRootPane;
+
+	/**
+	 * Represents the currently authenticated user, enabling role-based behavior and personalization.
+	 */
 	protected static User      theUser;
+
+	/**
+	 * Scene containing the forum UI, allowing switching between different application views.
+	 */
 	private static Scene       theForumScene;
-	private static final int   theRole = 1;   // Admin role constant (reused for activeHomePage)
+
+	/**
+	 * Constant representing the administrative role, used to control access to restricted features.
+	 */
+	private static final int   theRole = 1;
 
 
 	/*-*******************************************************************************************

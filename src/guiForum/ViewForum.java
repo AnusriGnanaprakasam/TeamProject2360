@@ -191,7 +191,7 @@ public class ViewForum {
 	 * <p> Method: displayForum(Stage ps, User user) </p>
 	 *
 	 * <p> Description: Static entry point — creates the singleton if needed, then
-	 * sets the stage title and scene and shows the window.  Called from
+	 * sets the stage title and scene and shows the window for student to see the forum.  Called from
 	 * ControllerAdminHome.openForum().</p>
 	 *
 	 * @param ps   the JavaFX Stage to use
@@ -226,6 +226,16 @@ public class ViewForum {
 		theStage.show();
 	}
 
+	/*******
+	 * <p> Constructor for ViewForum() </p>
+	 *
+	 * <p> Description: Creates a new scene for the forum and sets up all the text boxes
+	 * along with labels, buttons, posts, and replies. This is for the student to have proper buttons
+	 * to click, and it calls various methods (CRUD) for both posts and replies. </p>
+	 *
+	 * @param ps   the JavaFX Stage to use
+	 * @param user the currently signed-in User
+	 */
 
 	/*-*******************************************************************************************
 	Constructor
@@ -235,15 +245,12 @@ public class ViewForum {
 		theRootPane   = new Pane();
 		theForumScene = new Scene(theRootPane, width, height);
 
-		// ----------------------------------------------------------------
+		
 		// Area 1 — Page header
-		// ----------------------------------------------------------------
 		setupLabelUI(label_PageTitle,  "Arial", 26, width, Pos.CENTER,       0,   5);
 		setupLabelUI(label_LoggedInAs, "Arial", 14, width, Pos.BASELINE_LEFT, 20, 35);
 
-		// ----------------------------------------------------------------
 		// Area 2 — Post list (left column, x=20, width=280)
-		// ----------------------------------------------------------------
 		setupLabelUI(label_PostList, "Arial", 14, 280, Pos.BASELINE_LEFT, 20, 62);
 
 		list_Posts.setLayoutX(20);
@@ -273,9 +280,7 @@ public class ViewForum {
 		button_MyPosts.setOnAction((_)  -> ControllerForum.showMyPosts());
 		button_Search.setOnAction((_)   -> ControllerForum.searchPosts());
 
-		// ----------------------------------------------------------------
 		// Area 3 — Post content display (centre column, x=375, width=280)
-		// ----------------------------------------------------------------
 		setupLabelUI(label_PostDisplay, "Arial", 14, 280, Pos.BASELINE_LEFT, 375, 62);
 
 		text_PostDisplay.setLayoutX(375);
@@ -285,9 +290,7 @@ public class ViewForum {
 		text_PostDisplay.setEditable(false);
 		text_PostDisplay.setWrapText(true);
 
-		// ----------------------------------------------------------------
 		// Area 4 — Reply list (right column, x=670, width=290)
-		// ----------------------------------------------------------------
 		setupLabelUI(label_ReplyList, "Arial", 14, 290, Pos.BASELINE_LEFT, 670, 62);
 
 		list_Replies.setLayoutX(670);
@@ -301,9 +304,7 @@ public class ViewForum {
 		button_UnreadOnly.setOnAction((_) -> ControllerForum.toggleUnreadReplies());
 		button_AllReplies.setOnAction((_) -> ControllerForum.refreshReplyList(currentPostId));
 
-		// ----------------------------------------------------------------
 		// Area 5 — New / edit post inputs (bottom-left, y≈475)
-		// ----------------------------------------------------------------
 		setupLabelUI(label_NewPost, "Arial", 14, 340, Pos.BASELINE_LEFT, 20, 473);
 
 		setupTextFieldUI(text_PostTitle,  "Arial", 13, 165, Pos.BASELINE_LEFT, 20,  493);
@@ -326,9 +327,7 @@ public class ViewForum {
 		button_UpdatePost.setOnAction((_) -> ControllerForum.updatePost());
 		button_DeletePost.setOnAction((_) -> ControllerForum.deletePost());
 
-		// ----------------------------------------------------------------
 		// Area 6 — Reply input (bottom-right, y≈473)
-		// ----------------------------------------------------------------
 		setupLabelUI(label_ReplyInput, "Arial", 14, 610, Pos.BASELINE_LEFT, 375, 473);
 
 		text_ReplyInput.setLayoutX(375);
@@ -346,15 +345,11 @@ public class ViewForum {
 		button_UpdateReply.setOnAction((_) -> ControllerForum.updateReply());
 		button_DeleteReply.setOnAction((_) -> ControllerForum.deleteReply());
 
-		// ----------------------------------------------------------------
 		// Navigation — Back button
-		// ----------------------------------------------------------------
 		setupButtonUI(button_Back, "Dialog", 16, 120, Pos.CENTER, 20, 640);
 		button_Back.setOnAction((_) -> ControllerForum.goBack());
 
-		// ----------------------------------------------------------------
 		// Thread management (staff/admin only — visibility set in displayForum)
-		// ----------------------------------------------------------------
 		setupLabelUI(label_ThreadMgmt, "Arial", 12, 400, Pos.BASELINE_LEFT, 375, 615);
 
 		setupTextFieldUI(text_ThreadName, "Arial", 12, 180, Pos.BASELINE_LEFT, 375, 635);
@@ -369,9 +364,7 @@ public class ViewForum {
 		button_CreateThread.setOnAction((_) -> ControllerForum.createThread());
 		button_DeleteThread.setOnAction((_) -> ControllerForum.deleteThread());
 
-		// ----------------------------------------------------------------
 		// Add all widgets to the pane
-		// ----------------------------------------------------------------
 		theRootPane.getChildren().addAll(
 			// Header
 			label_PageTitle, label_LoggedInAs, line_Sep1,
@@ -406,7 +399,7 @@ public class ViewForum {
 	}
 
 
-	/*-*******************************************************************************************
+	/*******
 	Helper methods
 	*/
 

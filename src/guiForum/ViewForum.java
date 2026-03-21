@@ -34,9 +34,9 @@ import entityClasses.User;
  * The class follows the singleton design pattern and is the View portion of MVC.
  * All access starts by calling the static method displayForum().
  *
- * <p> Copyright: Lynn Robert Carter © 2025 </p>
+ * <p> Copyright: Anusri Gnanaprakasam © 2026 </p>
  *
- * @author Lynn Robert Carter
+ * @author Anusri Gnanaprakasam
  *
  * @version 1.00		2026-02-25 Initial version
  */

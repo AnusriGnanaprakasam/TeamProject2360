@@ -26,9 +26,9 @@ import entityClasses.User;
  * that can invoke these methods.  This is why each has been declared as "protected".
  * Do not change any of these methods to public.</p>
  *
- * <p> Copyright: Lynn Robert Carter © 2025 </p>
+ * <p> Copyright: Anusri Gnanaprakasam © 2026 </p>
  *
- * @author Lynn Robert Carter
+ * @author Anusri Gnanaprakasam
  *
  * @version 1.00		2026-02-25 Initial version
  */

@@ -46,36 +46,70 @@ public class ViewForum {
 	/*-*******************************************************************************************
 	Attributes
 	*/
-
+	/*******
+	 These values keep the forum screen consistent with the overall
+	 application window size. This supports the student user story that the
+	 discussion forum should open as part or the same app layout and feel easy
+	 to navigate.
+	 */
 	private static double width  = applicationMain.HW2.WINDOW_WIDTH;
 	private static double height = applicationMain.HW2.WINDOW_HEIGHT;
 
-	// ---- Area 1: Page header ----
+	/*******
+	These components identify the page and show who is logged in.
+    This supports student user stories such as:
+    "As a student, I want to know what page I am on"
+	 */
+	// Area 1: Page header 
 	private static Label label_PageTitle  = new Label("Discussion Forum");
 	private static Label label_LoggedInAs = new Label();
 	private static Line  line_Sep1        = new Line(20, 55, width - 20, 55);
 
-	// ---- Area 2: Post list (left column) ----
+	/*******
+	This section lets students browse available discussion posts.
+	The ListView acts as the main navigation area for selecting
+	a post and loading its content into the display area.
+	 */
+	// Area 2: Post list (left column)
 	private static Label label_PostList = new Label("Posts");
 	protected static ListView<String> list_Posts = new ListView<>();
 
-	// ---- Search / filter controls ----
+	/*******
+	These controls help students find relevant posts more quickly
+	*/
+	// Search / filter controls
 	protected static TextField text_Search     = new TextField();
 	private static Button      button_Search   = new Button("Search");
 	private static Button      button_AllPosts = new Button("All Posts");
 	private static Button      button_MyPosts  = new Button("My Posts");
 
-	// ---- Area 3: Post content display (centre) ----
+	/*******
+	This area shows the full contents of the currently selected post.
+	It supports user stories such as:
+	"As a student, I want to open a post and read its full content
+	so I can understand the discussion before replying."
+	 */
+	// Area 3: Post content display (center)
 	private static Label label_PostDisplay = new Label("Post Content");
 	protected static TextArea text_PostDisplay = new TextArea();
 
-	// ---- Area 4: Reply list (right column) ----
+	/*******
+	This section shows replies connected to the selected post.
+	It supports user stories such as:
+	"As a student, I want to read replies to a post so I can follow the
+	conversation."
+	*/
+	// Area 4: Reply list (right column)
 	private static Label label_ReplyList = new Label("Replies");
 	protected static ListView<String> list_Replies = new ListView<>();
 	private static Button button_UnreadOnly = new Button("Unread Only");
 	private static Button button_AllReplies = new Button("All Replies");
 
-	// ---- Area 5: Create / edit post inputs ----
+	/*******
+	These input controls allow students to create new discussion
+	posts or edit/delete posts they have already made.
+	 */
+	// Area 5: Create / edit post inputs
 	private static Label      label_NewPost       = new Label("Create / Edit Post");
 	private static Line       line_Sep2            = new Line(20, 435, width - 20, 435);
 	protected static TextField text_PostTitle      = new TextField();
@@ -86,7 +120,11 @@ public class ViewForum {
 	private static Button button_UpdatePost = new Button("Update Post");
 	private static Button button_DeletePost = new Button("Delete Post");
 
-	// ---- Area 6: Reply input ----
+	/*******
+	These controls allow students to participate in discussions
+	by writing and managing replies to posts.
+	 */
+	// Area 6: Reply input
 	private static Label     label_ReplyInput  = new Label("Write a Reply");
 	protected static TextArea text_ReplyInput  = new TextArea();
 
@@ -94,27 +132,48 @@ public class ViewForum {
 	private static Button button_UpdateReply = new Button("Update Reply");
 	private static Button button_DeleteReply = new Button("Delete Reply");
 
-	// ---- Thread management (staff/admin only — hidden for student roles) ----
+	/*******
+	 These controls exist for elevated roles only and are not part of
+	 the normal student workflow.
+	 They support administrative stories such as creating or removing
+	 discussion threads used to organize posts by topic.
+	 Since students should only post within available threads, these
+	 controls are hidden from student users.
+	 */
+	// Thread management (staff/admin only — hidden for student roles)
 	private static Label      label_ThreadMgmt  = new Label("Thread Management (Staff/Admin)");
 	protected static TextField text_ThreadName  = new TextField();
 	protected static TextField text_ThreadDesc  = new TextField();
 	private static Button button_CreateThread   = new Button("Create Thread");
 	private static Button button_DeleteThread   = new Button("Delete Thread");
 
-	// ---- Navigation ----
+	/*******
+	this button allows the user to leave the forum page and return
+	to the previous screen.
+	 */
+	// -Navigation
 	private static Button button_Back = new Button("Back");
 
-	// ---- Alerts ----
+	/*******
+	These alert objects provide feedback and confirmation messages.
+	 */
+	// Alerts
 	protected static Alert alertError          = new Alert(AlertType.ERROR);
 	protected static Alert alertInfo           = new Alert(AlertType.INFORMATION);
 	protected static Alert confirm_DeletePost  = new Alert(AlertType.CONFIRMATION);
 	protected static Alert confirm_DeleteReply = new Alert(AlertType.CONFIRMATION);
 
-	// ---- State ----
+	// State
 	/** The id of the post currently loaded in the display area; -1 if none. */
 	protected static int currentPostId = -1;
 
-	// ---- Singleton infrastructure ----
+	/** These references connect the forum view to the rest of the
+	application. They help this screen function as part of the
+	larger system by giving access to the database, current user,
+	current stage, and forum scene.
+	This supports user stories related to persistence, navigation,
+	and role-based behavior.*/
+	// Singleton infrastructure ----
 	private static ViewForum   theView;
 	private static Database    theDatabase = applicationMain.HW2.database;
 	protected static Stage     theStage;
